@@ -1,0 +1,33 @@
+:root{--bg:#f6f0ea;--card:#fffaf5;--ink:#3a2f2a;--muted:#8a7a70;--accent:#2f5d8a;--line:#e5d9cd}
+@media (prefers-color-scheme:dark){:root{--bg:#1d1916;--card:#26211d;--ink:#f1e8de;--muted:#b3a498;--accent:#8db6e0;--line:#3a322c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.5}
+a{color:inherit}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+.logo{font-size:1.4rem;font-style:italic;text-decoration:none}
+nav a{margin-left:16px;text-decoration:none;font:.9rem system-ui,sans-serif;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+section{padding:48px 16px;max-width:1100px;margin:0 auto}
+.hero{display:grid;gap:24px;align-items:center}
+.hero-img{width:100%;border-radius:16px;max-height:560px;object-fit:cover}
+.eyebrow{text-transform:uppercase;letter-spacing:.2em;font:.75rem system-ui,sans-serif;color:var(--muted)}
+h1{font-size:clamp(2rem,6vw,3.4rem);font-weight:400;font-style:italic;margin:.3em 0}
+h2{font-weight:400;font-size:2rem;text-align:center;margin:0 0 24px}
+.lead{color:var(--muted);font-size:1.1rem}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 24px;border-radius:999px;text-decoration:none;font:1rem system-ui,sans-serif;border:0;cursor:pointer}
+@media (prefers-color-scheme:dark){.btn{color:#10202f}}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;text-align:center}
+.why div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.why h3{margin:0 0 4px;font-weight:400}
+.why p{margin:0;color:var(--muted);font:.9rem system-ui,sans-serif}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.card div{padding:14px 16px 18px}
+.card h3{margin:0 0 4px;font-weight:400}
+.card p{margin:0 0 12px;color:var(--muted);font:.9rem system-ui,sans-serif}
+.card a{font:.9rem system-ui,sans-serif;color:var(--accent)}
+.order{text-align:center}
+.order p{color:var(--muted)}
+footer{text-align:center;padding:24px;color:var(--muted);font:.85rem system-ui,sans-serif;border-top:1px solid var(--line)}
+@media (min-width:800px){.hero{grid-template-columns:1fr 1fr}}
