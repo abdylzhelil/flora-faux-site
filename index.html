@@ -4,50 +4,345 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Вечный букет — композиции из искусственных цветов</title>
-<meta name="description" content="Реалистичные цветы высокого качества. Не вянут и не требуют ухода. Композиции для дома, офиса и подарков.">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="Вечный букет (flora.faux): композиции из реалистичных искусственных цветов. Не вянут и не требуют ухода. Декор для дома, офиса и подарок для близких.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Marck+Script&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5efe8; --bg2:#ede4da; --card:#fbf8f4; --ink:#2f2723; --muted:#7d6f66;
+  --line:#e2d6c9; --accent:#2c4f7c; --accent-ink:#ffffff; --warm:#c98a4b;
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Manrope",system-ui,sans-serif;
+  --script:"Marck Script","Cormorant Garamond",cursive;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1c1815; --bg2:#231e1a; --card:#28221d; --ink:#f2e9df; --muted:#b1a296;
+    --line:#3b332c; --accent:#9cbde3; --accent-ink:#13233a; --warm:#e0a86f;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--script);font-size:1.9rem;text-decoration:none;line-height:1}
+.nav{display:flex;gap:28px;font-size:.9rem}
+.nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a:hover{color:var(--ink)}
+.ig{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;text-decoration:none;border:1px solid var(--ink);border-radius:999px;padding:8px 16px;transition:.2s}
+.ig:hover{background:var(--ink);color:var(--bg)}
+.ig svg{width:16px;height:16px}
+@media (max-width:820px){.nav{display:none}}
+
+/* hero */
+.hero{padding:64px 0 40px}
+.hero .wrap{display:grid;gap:48px;align-items:center}
+@media (min-width:900px){.hero .wrap{grid-template-columns:1.05fr 1fr}}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,6.4vw,4.6rem);line-height:1.02;margin:0 0 22px}
+h1 em{font-family:var(--script);font-style:normal;color:var(--warm);font-size:1.05em}
+.lead{font-size:1.08rem;color:var(--muted);max-width:30em;margin:0 0 32px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--accent-ink);padding:14px 26px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{box-shadow:none;border-color:var(--ink)}
+.stats{display:flex;gap:36px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.stats b{display:block;font-family:var(--serif);font-size:1.9rem;font-weight:500;line-height:1}
+.stats span{font-size:.8rem;color:var(--muted)}
+.collage{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:min(620px,120vw)}
+.collage img{width:100%;height:100%;object-fit:cover;border-radius:22px}
+.collage img:first-child{grid-row:span 2;border-radius:200px 200px 22px 22px}
+
+/* features */
+.features{padding:24px 0 72px}
+.features .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;gap:16px;align-items:flex-start}
+.feat i{flex:none;width:44px;height:44px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;color:var(--warm)}
+.feat i svg{width:22px;height:22px}
+.feat h3{font-family:var(--serif);font-weight:500;font-size:1.25rem;margin:0 0 2px;line-height:1.2}
+.feat p{margin:0;color:var(--muted);font-size:.88rem}
+
+/* section heading */
+.sec{padding:80px 0}
+.sec.alt{background:var(--bg2)}
+.head{text-align:center;max-width:640px;margin:0 auto 44px}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.5vw,3rem);line-height:1.1;margin:0 0 12px}
+.head p{color:var(--muted);margin:0}
+
+/* catalog */
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:-16px 0 36px}
+.chip{font:inherit;font-size:.85rem;padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:.2s}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 24px 40px -28px rgba(60,40,20,.5)}
+.card .ph{aspect-ratio:4/5;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover img{transform:scale(1.04)}
+.card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-family:var(--serif);font-weight:500;font-size:1.45rem;margin:0;line-height:1.15}
+.card p{margin:0;color:var(--muted);font-size:.88rem;flex:1}
+.dots{display:flex;gap:6px;margin-top:8px}
+.dots span{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
+.card .more{margin-top:10px;font-size:.85rem;font-weight:600;color:var(--accent)}
+.card.hide{display:none}
+
+/* occasions */
+.occ{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.occ div{border-top:1px solid var(--ink);padding-top:18px}
+.occ span{font-family:var(--serif);font-size:1rem;color:var(--warm)}
+.occ h3{font-family:var(--serif);font-weight:500;font-size:1.6rem;margin:4px 0 6px}
+.occ p{margin:0;color:var(--muted);font-size:.92rem}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;position:relative}
+.step::before{counter-increment:s;content:counter(s);font-family:var(--serif);font-size:3.2rem;line-height:1;color:var(--warm);display:block;margin-bottom:12px}
+.step h3{margin:0 0 6px;font-size:1.05rem;font-weight:600}
+.step p{margin:0;color:var(--muted);font-size:.92rem}
+
+/* faq */
+.faq{max-width:760px;margin:0 auto}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;list-style:none;font-family:var(--serif);font-size:1.35rem;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--sans);font-weight:300;font-size:1.5rem;line-height:1;transition:transform .2s;color:var(--muted)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:10px 0 0;color:var(--muted)}
+
+/* cta */
+.cta{padding:96px 0;text-align:center}
+.cta .script{font-family:var(--script);font-size:clamp(2.6rem,7vw,4.4rem);color:var(--warm);line-height:1;margin:0 0 12px}
+.cta p{color:var(--muted);max-width:520px;margin:0 auto 30px}
+
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:.85rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+
+/* modal */
+dialog{border:0;padding:0;border-radius:24px;max-width:880px;width:calc(100% - 32px);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(20,14,10,.6);backdrop-filter:blur(4px)}
+.m{display:grid}
+@media (min-width:720px){.m{grid-template-columns:1fr 1fr}}
+.m img{width:100%;height:100%;max-height:70vh;object-fit:cover}
+.m .txt{padding:32px;display:flex;flex-direction:column;gap:12px}
+.m h3{font-family:var(--serif);font-weight:500;font-size:2.2rem;margin:0;line-height:1.1}
+.m p{margin:0;color:var(--muted)}
+.m ul{margin:0;padding-left:18px;color:var(--muted);font-size:.92rem}
+.m .price{font-family:var(--serif);font-size:1.3rem;margin-top:auto;color:var(--ink)}
+.close{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;border:0;background:var(--card);color:var(--ink);font-size:1.4rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{transition:none!important}}
+</style>
 </head>
 <body>
+
 <header class="top">
-  <a class="logo" href="#">Вечный букет</a>
-  <nav>
-    <a href="#catalog">Каталог</a>
-    <a href="#why">Преимущества</a>
-    <a href="#order">Заказ</a>
-  </nav>
+  <div class="wrap">
+    <a class="logo" href="#">Вечный букет</a>
+    <nav class="nav">
+      <a href="#catalog">Каталог</a>
+      <a href="#occasions">Для чего</a>
+      <a href="#how">Как заказать</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <a class="ig" data-ig href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      flora.faux
+    </a>
+  </div>
 </header>
 
 <main>
   <section class="hero">
-    <div class="hero-text">
-      <p class="eyebrow">Стильный акцент в вашем интерьере</p>
-      <h1>Красота, которая остаётся с вами</h1>
-      <p class="lead">Композиции из реалистичных искусственных цветов. Здесь начинается уют.</p>
-      <a class="btn" href="#catalog">Смотреть букеты</a>
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">Стильный акцент в вашем интерьере</p>
+        <h1>Красота, которая <em>остаётся</em> с вами</h1>
+        <p class="lead">Здесь начинается уют. Авторские композиции из реалистичных искусственных цветов — для дома, офиса и в подарок близким.</p>
+        <div class="btns">
+          <a class="btn" href="#catalog">Выбрать букет</a>
+          <a class="btn ghost" data-ig href="#" target="_blank" rel="noopener">Написать в Direct</a>
+        </div>
+        <div class="stats">
+          <div><b>5</b><span>готовых композиций</span></div>
+          <div><b>∞</b><span>не вянут</span></div>
+          <div><b>0</b><span>забот об уходе</span></div>
+        </div>
+      </div>
+      <div class="collage reveal">
+        <img src="img/blue-yellow.jpg" alt="Голубой с жёлтым букет">
+        <img src="img/pink.jpg" alt="Розовый букет">
+        <img src="img/blue.jpg" alt="Голубой букет">
+      </div>
     </div>
-    <img class="hero-img" src="img/blue-yellow.jpg" alt="Голубой с жёлтым букет в стеклянной вазе">
   </section>
 
-  <section id="why" class="why">
-    <div><h3>Не вянет</h3><p>и не требует ухода</p></div>
-    <div><h3>Реалистичные</h3><p>цветы высокого качества</p></div>
-    <div><h3>Для любого интерьера</h3><p>дом, офис, особые моменты</p></div>
-    <div><h3>Отличный подарок</h3><p>для близких</p></div>
+  <section class="features">
+    <div class="wrap">
+      <div class="feat reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c-4-2-7-5-7-9a7 7 0 0 1 7-7 7 7 0 0 1 7 7c0 4-3 7-7 9z"/><path d="M12 21V11"/></svg></i><div><h3>Не вянет</h3><p>и не требует ухода</p></div></div>
+      <div class="feat reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M9 3l3 18 3-18"/></svg></i><div><h3>Реалистичные</h3><p>цветы высокого качества</p></div></div>
+      <div class="feat reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></i><div><h3>Любой интерьер</h3><p>дом, офис, особые моменты</p></div></div>
+      <div class="feat reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1zm0 0c2-4 6-4 6-1s-6 1-6 1z"/></svg></i><div><h3>Отличный подарок</h3><p>для близких</p></div></div>
+    </div>
   </section>
 
-  <section id="catalog">
-    <h2>Каталог</h2>
-    <div class="grid" id="grid"></div>
+  <section id="catalog" class="sec alt">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Каталог композиций</h2>
+        <p>Нажмите на букет, чтобы рассмотреть его ближе</p>
+      </div>
+      <div class="chips" role="group" aria-label="Фильтр по цвету">
+        <button class="chip" aria-pressed="true" data-f="all">Все</button>
+        <button class="chip" aria-pressed="false" data-f="blue">Голубые</button>
+        <button class="chip" aria-pressed="false" data-f="yellow">Жёлтые</button>
+        <button class="chip" aria-pressed="false" data-f="pink">Розовые</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
   </section>
 
-  <section id="order" class="order">
-    <h2>Заказать букет</h2>
-    <p>Напишите нам — подберём композицию под ваш интерьер и повод.</p>
-    <a class="btn" href="https://www.instagram.com/flora.faux/" target="_blank" rel="noopener">Написать в Instagram @flora.faux</a>
+  <section id="occasions" class="sec">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Декор для дома, офиса<br>и особых моментов</h2>
+        <p>Букет, который радует каждый день — без воды, без увядания, без хлопот</p>
+      </div>
+      <div class="occ">
+        <div class="reveal"><span>01</span><h3>Для дома</h3><p>Яркий акцент на столе, комоде или полке — уют, который не нужно обновлять.</p></div>
+        <div class="reveal"><span>02</span><h3>Для офиса</h3><p>Живой вид рабочего пространства без полива и ухода.</p></div>
+        <div class="reveal"><span>03</span><h3>В подарок</h3><p>Подарок, который останется надолго и будет напоминать о вас.</p></div>
+        <div class="reveal"><span>04</span><h3>Особые моменты</h3><p>Праздник, новоселье, фотосессия — композиция подойдёт к любому поводу.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="sec alt">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Как заказать</h2>
+        <p>Всего три шага до вашего вечного букета</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h3>Выберите композицию</h3><p>Из каталога или по фото из нашего Instagram.</p></div>
+        <div class="step reveal"><h3>Напишите в Direct</h3><p>Расскажите о поводе и интерьере — подскажем с выбором.</p></div>
+        <div class="step reveal"><h3>Получите букет</h3><p>Договоримся о деталях, и композиция поедет к вам.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="sec">
+    <div class="wrap">
+      <div class="head reveal"><h2>Частые вопросы</h2></div>
+      <div class="faq">
+        <details><summary>Цветы выглядят как живые?</summary><p>Да, мы используем реалистичные искусственные цветы высокого качества — посмотрите фото в каталоге.</p></details>
+        <details><summary>Как ухаживать за букетом?</summary><p>Поливать не нужно. Время от времени смахивайте пыль мягкой сухой кисточкой или обдувайте феном с холодным воздухом.</p></details>
+        <details><summary>Ваза входит в композицию?</summary><p>Уточните в Direct — расскажем, что входит в выбранную композицию.</p></details>
+        <details><summary>Сколько стоит букет?</summary><p>Стоимость зависит от композиции. Напишите нам в Instagram — ответим и пришлём подробности.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta sec alt">
+    <div class="wrap reveal">
+      <p class="script">Здесь начинается уют</p>
+      <p>Напишите нам — подберём композицию под ваш интерьер и повод.</p>
+      <a class="btn" data-ig href="#" target="_blank" rel="noopener">Написать в Instagram @flora.faux</a>
+    </div>
   </section>
 </main>
 
-<footer>© Вечный букет · <a href="https://www.instagram.com/flora.faux/" target="_blank" rel="noopener">@flora.faux</a></footer>
-<script src="main.js"></script>
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> Вечный букет</span>
+    <a data-ig href="#" target="_blank" rel="noopener">Instagram @flora.faux</a>
+  </div>
+</footer>
+
+<dialog id="modal">
+  <button class="close" aria-label="Закрыть">×</button>
+  <div class="m">
+    <img id="m-img" alt="">
+    <div class="txt">
+      <h3 id="m-name"></h3>
+      <p id="m-desc"></p>
+      <ul id="m-list"></ul>
+      <p class="price">Цена — по запросу в Direct</p>
+      <a class="btn" data-ig href="#" target="_blank" rel="noopener">Заказать этот букет</a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const IG = 'https://www.instagram.com/flora.faux/';
+// Каталог: чтобы добавить букет, допишите объект в этот список
+const bouquets = [
+  {name:'Голубой с жёлтым', tag:'blue yellow', img:'img/blue-yellow.jpg', colors:['#7fb0e0','#f2c94c','#9bc53d'],
+   desc:'Яркий контраст: пышная голубая гортензия и солнечные жёлтые акценты.',
+   flowers:['Гортензия','Антуриум','Калла','Гладиолус','Ранункулюс']},
+  {name:'Голубой букет', tag:'blue', img:'img/blue.jpg', colors:['#1f5fbf','#8fbbe8','#ffffff'],
+   desc:'Нежные маки всех оттенков голубого в вазе с синей росписью.',
+   flowers:['Маки','Гортензия','Калла']},
+  {name:'Розовый букет', tag:'pink', img:'img/pink.jpg', colors:['#e57bb0','#c0392b','#6c4ab6'],
+   desc:'Смелая палитра: розовая гортензия, маки и антуриумы.',
+   flowers:['Гортензия','Ранункулюс','Маки','Антуриум','Калла']},
+  {name:'Жёлтый букет', tag:'yellow', img:'img/yellow.jpg', colors:['#f2c94c','#a4c639','#f3efe0'],
+   desc:'Свежая жёлто-зелёная композиция в рельефной стеклянной вазе.',
+   flowers:['Каллы','Ранункулюс','Хризантема','Гортензия']},
+  {name:'Белый с синим', tag:'blue', img:'img/white-blue.jpg', colors:['#1d4fa8','#9cc3ea','#ffffff'],
+   desc:'Глубокий синий и белый — благородная классика в фактурной вазе.',
+   flowers:['Гортензия','Дельфиниум','Орхидея']},
+];
+
+document.querySelectorAll('[data-ig]').forEach(a => a.href = IG);
+document.getElementById('y').textContent = new Date().getFullYear();
+
+const grid = document.getElementById('grid');
+const modal = document.getElementById('modal');
+bouquets.forEach(b => {
+  const c = document.createElement('article');
+  c.className = 'card'; c.dataset.tag = b.tag; c.tabIndex = 0;
+  c.innerHTML = '<div class="ph"><img loading="lazy" alt=""></div><div class="body"><h3></h3><p></p><div class="dots"></div><span class="more">Подробнее →</span></div>';
+  c.querySelector('img').src = b.img;
+  c.querySelector('img').alt = b.name;
+  c.querySelector('h3').textContent = b.name;
+  c.querySelector('p').textContent = b.desc;
+  b.colors.forEach(col => { const s = document.createElement('span'); s.style.background = col; c.querySelector('.dots').append(s); });
+  const open = () => {
+    document.getElementById('m-img').src = b.img;
+    document.getElementById('m-img').alt = b.name;
+    document.getElementById('m-name').textContent = b.name;
+    document.getElementById('m-desc').textContent = b.desc;
+    const ul = document.getElementById('m-list'); ul.innerHTML = '';
+    b.flowers.forEach(f => { const li = document.createElement('li'); li.textContent = f; ul.append(li); });
+    modal.showModal();
+  };
+  c.addEventListener('click', open);
+  c.addEventListener('keydown', e => { if (e.key === 'Enter') open(); });
+  grid.append(c);
+});
+modal.querySelector('.close').onclick = () => modal.close();
+modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
+
+document.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => {
+  document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === ch));
+  const f = ch.dataset.f;
+  document.querySelectorAll('.card').forEach(c => c.classList.toggle('hide', f !== 'all' && !c.dataset.tag.includes(f)));
+}));
+
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold:.12}) : null;
+document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+</script>
 </body>
 </html>
