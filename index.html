@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Вечный букет</title>
 <meta name="description" content="Вечный букет (flora.faux): композиции из реалистичных искусственных цветов. Не вянут и не требуют ухода. Декор для дома, офиса и подарок для близких.">
+<meta property="og:title" content="Вечный букет — композиции из искусственных цветов">
+<meta property="og:description" content="Реалистичные цветы, которые не вянут. Для дома, офиса и в подарок.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/blue.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Вечный букет","alternateName":"flora.faux","description":"Композиции из реалистичных искусственных цветов","sameAs":["https://www.instagram.com/flora.faux/"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Prata&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
@@ -105,6 +110,51 @@ summary::after{content:"";flex:none;width:12px;height:12px;margin-top:8px;border
 details[open] summary::after{transform:rotate(-135deg) translate(-4px,-4px)}
 details p{margin:-6px 0 26px;color:var(--muted);max-width:44em}
 
+/* announce bar */
+.bar{background:var(--ink);color:var(--paper);font-size:12px;letter-spacing:.06em}
+.bar .wrap{display:flex;justify-content:center;gap:10px 28px;flex-wrap:wrap;padding-block:9px;text-align:center}
+.bar a{border-bottom:1px solid currentColor}
+
+/* compare */
+.cmp-wrap{overflow-x:auto}
+.cmp{width:100%;min-width:520px;border-collapse:collapse;font-size:15px}
+.cmp th,.cmp td{text-align:left;padding:18px 16px 18px 0;border-bottom:1px solid var(--hair);vertical-align:top}
+.cmp thead th{font:400 11px/1.4 var(--text);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);border-bottom-color:var(--ink)}
+.cmp tbody th{font-weight:400;color:var(--muted);width:30%}
+.cmp td.ours{color:var(--ink)}
+.cmp td.ours::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--cobalt);margin-right:10px;vertical-align:middle}
+.cmp td.theirs{color:var(--muted)}
+
+/* custom order */
+.custom{display:grid;gap:32px;align-items:center}
+@media (min-width:900px){.custom{grid-template-columns:6fr 5fr}}
+.custom .ph{aspect-ratio:5/4;overflow:hidden;background:var(--tint)}
+.custom .ph img{width:100%;height:100%;object-fit:cover}
+.custom h2{font-size:clamp(34px,4.6vw,60px);line-height:1.04;margin:18px 0 20px}
+.custom p{color:var(--muted);margin:0 0 28px;max-width:32em}
+.custom ul{list-style:none;padding:0;margin:0 0 32px;border-top:1px solid var(--hair)}
+.custom li{padding:14px 0;border-bottom:1px solid var(--hair);font-size:15px}
+
+/* info: delivery, payment, care */
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 40px;margin-top:clamp(48px,6vw,80px)}
+.info > div{border-top:1px solid var(--hair);padding-top:22px;display:flex;flex-direction:column;gap:10px}
+.info h3{font-size:22px}
+.info p{margin:0;color:var(--muted);font-size:15px}
+
+/* reviews (hidden until filled) */
+.revs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px}
+.rev{border-top:1px solid var(--hair);padding-top:22px;display:flex;flex-direction:column;gap:14px}
+.rev blockquote{margin:0;font-family:var(--display);font-size:21px;line-height:1.35}
+
+/* mobile sticky order button */
+.mcta{display:none}
+@media (max-width:760px){
+  .mcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:15;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:1px solid var(--hair)}
+  .mcta a{display:block;text-align:center;background:var(--ink);color:var(--paper);padding:14px;font-size:14px;letter-spacing:.04em}
+  footer{padding-bottom:76px}
+}
+.item .price{font-size:14px;color:var(--ink);margin:-8px 0 0}
+
 /* final */
 .final{border-top:1px solid var(--hair)}
 .final h2{font-size:clamp(40px,7vw,96px);line-height:1;margin:22px 0 36px;max-width:12ch}
@@ -134,12 +184,17 @@ dialog::backdrop{background:rgba(10,11,14,.72)}
 </head>
 <body>
 
+<div class="bar">
+  <div class="wrap"><span>Готовые композиции и сборка под заказ</span><span id="bar-delivery"></span><a data-ig href="#" target="_blank" rel="noopener">Заказ в Direct</a></div>
+</div>
+
 <header>
   <div class="wrap">
     <a class="logo" href="#top">Вечный букет</a>
     <nav>
       <a class="hide-m" href="#collection">Коллекция</a>
-      <a class="hide-m" href="#order">Заказ</a>
+      <a class="hide-m" href="#custom">Под заказ</a>
+      <a class="hide-m" href="#order">Доставка</a>
       <a class="hide-m" href="#faq">Вопросы</a>
       <a data-ig href="#" target="_blank" rel="noopener">Instagram ↗</a>
     </nav>
@@ -186,6 +241,44 @@ dialog::backdrop{background:rgba(10,11,14,.72)}
     </div>
   </section>
 
+  <section class="block" id="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Почему вечный букет</p></div>
+        <div><h2>Живые цветы радуют неделю. Наши — годами</h2></div>
+      </div>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead><tr><th></th><th>Вечный букет</th><th>Живой букет</th></tr></thead>
+          <tbody>
+            <tr><th>Срок жизни</th><td class="ours">Годами без изменений</td><td class="theirs">5–10 дней</td></tr>
+            <tr><th>Уход</th><td class="ours">Иногда смахнуть пыль</td><td class="theirs">Менять воду, подрезать стебли</td></tr>
+            <tr><th>Аллергия и запах</th><td class="ours">Нет пыльцы</td><td class="theirs">Пыльца, запах</td></tr>
+            <tr><th>Сезонность</th><td class="ours">Любые цветы в любое время года</td><td class="theirs">Зависит от сезона</td></tr>
+            <tr><th>Как подарок</th><td class="ours">Остаётся и напоминает о вас</td><td class="theirs">Через неделю в мусор</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block quote" id="custom">
+    <div class="wrap custom">
+      <div class="ph"><img src="img/pink.jpg" alt="Розовый букет в расписной вазе" loading="lazy"></div>
+      <div>
+        <p class="label">Индивидуальный заказ</p>
+        <h2>Соберём букет под ваш интерьер</h2>
+        <p>Пришлите фото комнаты или расскажите о поводе — подберём цветы, оттенки и вазу.</p>
+        <ul>
+          <li>Под цвет интерьера или любимую вазу</li>
+          <li>На подарок: день рождения, новоселье, юбилей</li>
+          <li>Для офиса, салона, кафе</li>
+        </ul>
+        <a class="link" data-ig href="#" target="_blank" rel="noopener">Обсудить букет в Direct <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
   <section class="block" id="order">
     <div class="wrap">
       <div class="sec-head">
@@ -197,6 +290,21 @@ dialog::backdrop{background:rgba(10,11,14,.72)}
         <div class="step"><span class="label">Шаг 2</span><h3>Напишите</h3><p>В Direct: расскажите о поводе и интерьере — поможем с выбором.</p></div>
         <div class="step"><span class="label">Шаг 3</span><h3>Получите</h3><p>Обсудим детали, и букет отправится к вам.</p></div>
       </div>
+      <div class="info">
+        <div><p class="label">Доставка</p><h3>Куда и когда</h3><p id="i-delivery"></p></div>
+        <div><p class="label">Оплата</p><h3>Как оплатить</h3><p id="i-payment"></p></div>
+        <div><p class="label">Уход</p><h3>Как сохранить вид</h3><p>Раз в месяц смахните пыль мягкой сухой кистью или обдуйте феном в холодном режиме. Не ставьте букет под прямое солнце — так цвета дольше останутся яркими.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="reviews" hidden style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Отзывы</p></div>
+        <div><h2>Что говорят о&nbsp;наших букетах</h2></div>
+      </div>
+      <div class="revs" id="revs"></div>
     </div>
   </section>
 
@@ -208,7 +316,7 @@ dialog::backdrop{background:rgba(10,11,14,.72)}
       </div>
       <div class="faq">
         <details><summary>Цветы выглядят как живые?</summary><p>Да. Мы работаем с реалистичными искусственными цветами высокого качества — все фото в коллекции сделаны в обычном интерьере.</p></details>
-        <details><summary>Как ухаживать за букетом?</summary><p>Вода не нужна. Достаточно время от времени смахивать пыль мягкой сухой кистью или обдувать букет феном в холодном режиме.</p></details>
+        <details><summary>Можно собрать букет под заказ?</summary><p>Да, напишите в Direct: пришлите фото интерьера или расскажите о поводе — подберём цветы и оттенки.</p></details>
         <details><summary>Ваза входит в композицию?</summary><p>Уточните в Direct — расскажем, что входит в выбранную композицию.</p></details>
         <details><summary>Сколько стоит букет?</summary><p>Стоимость зависит от композиции. Напишите нам в Instagram — пришлём цену и подробности.</p></details>
       </div>
@@ -223,6 +331,8 @@ dialog::backdrop{background:rgba(10,11,14,.72)}
     </div>
   </section>
 </main>
+
+<div class="mcta"><a data-ig href="#" target="_blank" rel="noopener">Заказать в Direct</a></div>
 
 <footer>
   <div class="wrap">
@@ -242,7 +352,10 @@ dialog::backdrop{background:rgba(10,11,14,.72)}
       <dl>
         <dt>Цвета</dt><dd id="v-tones"></dd>
         <dt>Цветы</dt><dd id="v-flowers"></dd>
-        <dt>Цена</dt><dd>по запросу в Direct</dd>
+        <dt>Высота</dt><dd id="v-height"></dd>
+        <dt>В комплекте</dt><dd id="v-includes"></dd>
+        <dt>Цена</dt><dd id="v-price"></dd>
+        <dt>Доставка</dt><dd id="v-delivery"></dd>
       </dl>
       <a class="link" data-ig href="#" target="_blank" rel="noopener">Заказать этот букет <span aria-hidden="true">↗</span></a>
     </div>
@@ -251,7 +364,19 @@ dialog::backdrop{background:rgba(10,11,14,.72)}
 
 <script>
 const IG = 'https://www.instagram.com/flora.faux/';
-// Коллекция: чтобы добавить букет, допишите объект в этот список
+// Настройки магазина: заполните — и текст появится на сайте. Пустое поле = «уточняйте в Direct»
+const SHOP = {
+  delivery: '',   // напр.: 'По Москве — 1–2 дня, 500 ₽. По России — СДЭК, 3–7 дней.'
+  deliveryShort: '', // для верхней полосы, напр.: 'Доставка по Москве за 1–2 дня'
+  payment: '',    // напр.: 'Перевод на карту или наличными при получении.'
+};
+// Отзывы: добавьте реальные отзывы клиентов — раздел появится сам
+const reviews = [
+  // {text:'Подарила маме, она в восторге — от живых не отличить!', name:'Анна'},
+];
+// Коллекция: чтобы добавить букет, допишите объект в этот список.
+// price, height, includes — необязательные; пустые показываются как «уточняйте в Direct»
+
 const bouquets = [
   {name:'Голубой с жёлтым', img:'img/blue-yellow.jpg', tones:'Голубой · жёлтый · зелёный',
    desc:'Яркий контраст: пышная голубая гортензия и солнечные жёлтые акценты в высокой стеклянной вазе.',
@@ -270,7 +395,21 @@ const bouquets = [
    flowers:'гортензия, дельфиниум, орхидея'},
 ];
 
+const ASK = 'уточняйте в Direct';
 document.querySelectorAll('[data-ig]').forEach(a => a.href = IG);
+document.getElementById('i-delivery').textContent = SHOP.delivery || 'Город, сроки и стоимость доставки уточняйте в Direct — ответим быстро.';
+document.getElementById('i-payment').textContent = SHOP.payment || 'Способы оплаты уточняйте в Direct.';
+const barDel = document.getElementById('bar-delivery');
+if (SHOP.deliveryShort) barDel.textContent = SHOP.deliveryShort; else barDel.hidden = true;
+if (reviews.length) {
+  document.getElementById('reviews').hidden = false;
+  reviews.forEach(r => {
+    const d = document.createElement('div'); d.className = 'rev';
+    const q = document.createElement('blockquote'); q.textContent = '«' + r.text + '»';
+    const n = document.createElement('span'); n.className = 'label'; n.textContent = r.name;
+    d.append(q, n); document.getElementById('revs').append(d);
+  });
+}
 document.getElementById('y').textContent = new Date().getFullYear();
 
 const coll = document.getElementById('coll');
@@ -280,7 +419,8 @@ bouquets.forEach((b, i) => {
   const no = '№ ' + String(i + 1).padStart(2, '0');
   const el = document.createElement('article');
   el.className = 'item'; el.tabIndex = 0; el.setAttribute('role', 'button');
-  el.innerHTML = '<div class="ph"><img loading="lazy" alt=""></div><div class="row"><h3></h3><span class="no"></span></div><p class="tones"></p>';
+  el.innerHTML = '<div class="ph"><img loading="lazy" alt=""></div><div class="row"><h3></h3><span class="no"></span></div><p class="tones"></p><p class="price"></p>';
+  el.querySelector('.price').textContent = b.price || 'Цена по запросу';
   el.querySelector('img').src = b.img; el.querySelector('img').alt = b.name;
   el.querySelector('h3').textContent = b.name;
   el.querySelector('.no').textContent = no;
@@ -292,6 +432,10 @@ bouquets.forEach((b, i) => {
     $('v-desc').textContent = b.desc;
     $('v-tones').textContent = b.tones;
     $('v-flowers').textContent = b.flowers;
+    $('v-height').textContent = b.height || ASK;
+    $('v-includes').textContent = b.includes || ASK;
+    $('v-price').textContent = b.price || 'по запросу в Direct';
+    $('v-delivery').textContent = SHOP.deliveryShort || ASK;
     viewer.showModal();
   };
   el.addEventListener('click', open);
