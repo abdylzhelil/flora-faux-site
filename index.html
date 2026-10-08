@@ -255,6 +255,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 // ===== Контакты. WhatsApp: номер в международном формате, только цифры (например 79991234567) =====
 const WHATSAPP = '79674030970';
 const INSTAGRAM = 'https://www.instagram.com/flora.faux/';
+const DIRECT = 'https://ig.me/m/flora.faux'; // сразу открывает чат в Direct
 
 // ===== Каталог =====
 const bouquets = [
@@ -301,13 +302,13 @@ const btn = (cls, href, html) => {
 };
 const contactButtons = (box, text, short) => {
   if (WHATSAPP) box.append(btn('wa', waLink(text), ICON_WA + (short ? 'WhatsApp' : 'Написать в WhatsApp')));
-  box.append(btn(WHATSAPP ? 'ghost' : 'dark', INSTAGRAM, ICON_IG + (short ? 'Direct' : 'Написать в Direct')));
+  box.append(btn(WHATSAPP ? 'ghost' : 'dark', DIRECT, ICON_IG + (short ? 'Direct' : 'Написать в Direct')));
 };
 
 document.querySelectorAll('[data-contacts]').forEach(box =>
   contactButtons(box, 'Здравствуйте! Хочу заказать композицию.', box.hasAttribute('data-short')));
 document.querySelectorAll('[data-order]').forEach(a => {
-  a.href = WHATSAPP ? waLink('Здравствуйте! Хочу заказать композицию.') : INSTAGRAM;
+  a.href = WHATSAPP ? waLink('Здравствуйте! Хочу заказать композицию.') : DIRECT;
   a.target = '_blank'; a.rel = 'noopener';
 });
 
