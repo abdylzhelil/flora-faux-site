@@ -74,20 +74,37 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 /* catalog index */
 .index{padding-block:clamp(56px,8vw,96px) 8px}
 .index h2{font-size:clamp(34px,4.6vw,56px);margin:10px 0 28px}
-.thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-@media (max-width:900px){.thumbs{grid-template-columns:repeat(3,1fr)}}
-.thumb{display:flex;flex-direction:column;gap:10px}
+.thumbs{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);scroll-padding-inline:var(--gutter);padding-bottom:4px}
+.thumbs::-webkit-scrollbar,.slider::-webkit-scrollbar{display:none}
+.thumb{flex:1 0 150px;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px}
+@media (max-width:600px){.thumb{flex-basis:40%}}
+.thumb.on span{color:var(--oak)}
 .thumb img{aspect-ratio:3/4;width:100%;object-fit:cover;border-radius:16px;transition:transform .4s}
 .thumb:hover img{transform:translateY(-3px)}
 .thumb span{font-family:var(--display);font-size:18px;line-height:1.15}
 
 /* lookbook */
-.look{padding-block:clamp(48px,7vw,96px)}
-.look + .look{border-top:1px solid var(--line)}
-.look .wrap{display:grid;gap:36px;align-items:center}
-@media (min-width:900px){.look .wrap{grid-template-columns:1fr 1fr;gap:72px}.look:nth-of-type(even) .ph{order:2}}
+.shop{scroll-margin-top:calc(64px + env(safe-area-inset-top,0px));padding-block:clamp(40px,6vw,72px) clamp(56px,8vw,96px)}
+.slider{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;align-items:flex-start;overscroll-behavior-x:contain}
+.look{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always}
+.look .wrap{display:grid;gap:28px;align-items:center}
+@media (min-width:900px){.look .wrap{grid-template-columns:1fr 1fr;gap:64px}}
+.ctrl{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+.dots{display:flex;gap:8px}
+.dots button{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:var(--line);cursor:pointer;transition:width .3s,background .3s}
+.dots button[aria-current="true"]{width:26px;background:var(--oak)}
+.arrows{display:flex;align-items:center;gap:10px}
+.arrows .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:48px;text-align:center}
+.arrow{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--sand);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background .25s,color .25s,opacity .25s}
+.arrow:hover{background:var(--ink);color:var(--sand)}
+.arrow:disabled{opacity:.35;pointer-events:none}
+.arrow svg{width:18px;height:18px}
+.hint{font-size:13px;color:var(--muted);white-space:nowrap}
+@media (max-width:760px){.arrows .count{display:none}}
+@media (min-width:761px){.hint{display:none}}
 .look .ph{position:relative}
-.look .ph img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+.look .ph img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+@media (max-width:760px){.look .ph img{aspect-ratio:1/1;object-position:center 60%}}
 .look .num{position:absolute;left:18px;top:18px;background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;font:500 12px/1.4 var(--text);letter-spacing:.08em;font-variant-numeric:tabular-nums}
 .look .txt{display:flex;flex-direction:column;gap:18px;min-width:0}
 .look h3{font-size:clamp(36px,4.4vw,56px)}
@@ -170,7 +187,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     <div class="thumbs" id="thumbs"></div>
   </section>
 
-  <div id="looks"></div>
+  <section class="shop" aria-label="Композиции">
+    <div class="wrap ctrl">
+      <div class="dots" id="dots"></div>
+      <span class="hint">Листайте ←→</span>
+      <div class="arrows">
+        <button class="arrow" id="prev" aria-label="Предыдущая композиция"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span class="count" id="count"></span>
+        <button class="arrow" id="next" aria-label="Следующая композиция"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+    <div class="slider" id="looks"></div>
+  </section>
 
   <section class="note">
     <div class="wrap">
@@ -273,7 +301,11 @@ bouquets.forEach((b, i) => {
   t.innerHTML = '<img loading="lazy" alt=""><span></span>';
   t.querySelector('img').src = b.img; t.querySelector('img').alt = b.name;
   t.querySelector('span').textContent = b.name;
+  t.addEventListener('click', e => { e.preventDefault(); go(i); document.querySelector('.shop').scrollIntoView({behavior:'smooth'}); });
   thumbs.append(t);
+  const d = document.createElement('button');
+  d.setAttribute('aria-label', b.name); d.onclick = () => go(i);
+  document.getElementById('dots').append(d);
 
   const s = document.createElement('section');
   s.className = 'look'; s.id = b.id;
@@ -294,6 +326,25 @@ bouquets.forEach((b, i) => {
   contactButtons(s.querySelector('.btns'), 'Здравствуйте! Интересует композиция «' + b.name + '».', false);
   looks.append(s);
 });
+function go(i) {
+  i = Math.max(0, Math.min(bouquets.length - 1, i));
+  looks.scrollTo({left: i * looks.clientWidth});
+}
+let cur = -1;
+function sync() {
+  const i = Math.round(looks.scrollLeft / looks.clientWidth);
+  if (i === cur) return; cur = i;
+  document.querySelectorAll('#dots button').forEach((d, k) => d.setAttribute('aria-current', k === i));
+  document.querySelectorAll('.thumb').forEach((t, k) => t.classList.toggle('on', k === i));
+  document.getElementById('count').textContent = String(i + 1).padStart(2, '0') + ' / ' + total;
+  document.getElementById('prev').disabled = i === 0;
+  document.getElementById('next').disabled = i === bouquets.length - 1;
+}
+looks.addEventListener('scroll', () => requestAnimationFrame(sync), {passive:true});
+addEventListener('resize', () => { const k = cur; cur = -1; looks.scrollTo({left: k * looks.clientWidth, behavior:'instant'}); sync(); });
+document.getElementById('prev').onclick = () => go(cur - 1);
+document.getElementById('next').onclick = () => go(cur + 1);
+sync();
 document.getElementById('y').textContent = new Date().getFullYear();
 </script>
 </body>
