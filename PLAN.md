@@ -4,6 +4,14 @@
 Сайт: GitHub Pages, репозиторий `abdylzhelil/flora-faux-site`, ветка `main`.
 Домен: Рег.ру, оплачен до 08.10.2027.
 
+## ⚠️ Важные сроки
+
+| Срок | Что сделать | Статус |
+|------|-------------|--------|
+| **до 03.12.2026** | Включить двухфакторную защиту (2FA) в GitHub: значок профиля → Settings → Password and authentication → Enable two-factor authentication (приложение Яндекс Ключ / Google Authenticator). Сохранить резервные коды. Иначе GitHub ограничит действия аккаунта — нельзя будет обновлять сайт. | ⏳ не сделано |
+| сейчас | Включить 2FA в Cloudflare: профиль → Profile → Authentication → Two-Factor Authentication. | ⏳ не сделано |
+| до 08.10.2027 | Продлить домен flora-faux.ru в Рег.ру. «Премиум DNS» не продлевать. | — |
+
 ## Этапы
 
 | # | Этап | Статус |
