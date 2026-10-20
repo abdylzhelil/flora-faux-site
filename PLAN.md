@@ -19,7 +19,7 @@
 | 1 | Сайт-лукбук: 6 композиций, WhatsApp + Direct, белый фон, свайп | ✅ готово |
 | 2 | Публикация на GitHub Pages | ✅ готово |
 | 3 | Домен flora-faux.ru: куплен, DNS настроен | ✅ готово |
-| 4 | **HTTPS-сертификат** | ⏳ в работе: DNS перенесён на Cloudflare 19.10.2026, ждём переключения |
+| 4 | **HTTPS-сертификат** | ✅ готово 20.10.2026: DNS на Cloudflare, сертификат выпущен GitHub |
 | 5 | Яндекс Метрика: счётчик + цели «WhatsApp» и «Direct» | ⏸ после HTTPS |
 | 6 | Яндекс Вебмастер: подтверждение, sitemap.xml, регион | ⏸ после HTTPS |
 | 7 | Яндекс Директ: кампания, тексты, ключевые слова | ⏸ после 5–6 |
@@ -48,8 +48,11 @@
    - CNAME www → abdylzhelil.github.io
 3. В Рег.ру: DNS-серверы → «Свой список» → два сервера `*.ns.cloudflare.com`.
 4. Ждать переключения (1–24 ч), проверить «DNS check successful» на странице Pages.
-5. Поставить галочку **Enforce HTTPS**.
-6. Заменить в сайте адрес на `https://www.flora-faux.ru/` (canonical, og:url, og:image, sitemap.xml, robots.txt).
+5. Поставить галочку **Enforce HTTPS** (сделать вручную на странице Pages).
+6. ✅ Адрес в сайте заменён на `https://www.flora-faux.ru/` (canonical, og:url, og:image, sitemap.xml, robots.txt).
+
+**Итог (20.10.2026):** после переноса DNS на Cloudflare GitHub сразу показал «DNS check successful»
+и выпустил сертификат. https://www.flora-faux.ru работает, flora-faux.ru перенаправляет на www.
 
 **Запасной вариант — шаг Б (если с Cloudflare не получится): Yandex Cloud.**
 - DNS-зона в Yandex Cloud DNS (платно, десятки ₽/мес) вместо Cloudflare, те же записи.

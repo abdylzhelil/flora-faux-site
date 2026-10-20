@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://flora-faux.ru/sitemap.xml
+Sitemap: https://www.flora-faux.ru/sitemap.xml
